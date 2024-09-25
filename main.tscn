@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwob7lft84ejq"]
+
+[ext_resource type="PackedScene" uid="uid://4t3msssrdfbn" path="res://assets/Torii/Japanese_Arch_Low.FBX" id="1_utahc"]
+[ext_resource type="PackedScene" uid="uid://obbmwvfjafbq" path="res://character.tscn" id="2_lkv1e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sc777"]
+size = Vector3(500, 2, 500)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cnl3t"]
+size = Vector3(500, 2, 500)
+
+[node name="Main" type="Node"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_sc777")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_cnl3t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.353553, -0.707107, -0.612372, 0.866025, -2.25634e-15, 0.5, -0.353553, -0.707107, 0.612372, -20, 15, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Japanese_Arch_Low" parent="MeshInstance3D" instance=ExtResource("1_utahc")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 66)
+
+[node name="Character" parent="." instance=ExtResource("2_lkv1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
