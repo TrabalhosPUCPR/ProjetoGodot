@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dek2tdpwmbpd7"]
+
+[ext_resource type="PackedScene" uid="uid://wsvecma0pgg2" path="res://assets/shiba/Shiba.glb" id="1_7mlnm"]
+[ext_resource type="Texture2D" uid="uid://dif0h3qxfdwwg" path="res://assets/shiba/Shiba_DIF01.png" id="2_3sabu"]
+[ext_resource type="Script" path="res://assets/shiba/shiba.gd" id="2_cwac3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blwm6"]
+albedo_texture = ExtResource("2_3sabu")
+
+[node name="Shiba" instance=ExtResource("1_7mlnm")]
+script = ExtResource("2_cwac3")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(0.112235, 0, 0, 0, 0.0234113, 0.109766, 0, -0.109766, 0.0234113, -8.43406e-18, 0.0591198, 0.0570235)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-1.19592e-16, 0.0318294, -0.0277611)
+bones/0/rotation = Quaternion(0.0192215, 1.19187e-07, 2.29139e-09, 0.999815)
+bones/1/rotation = Quaternion(0.550597, 0.0936839, -0.104148, 0.822934)
+
+[node name="Shiba inu" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_blwm6")
+
+[node name="AnimationPlayer" parent="." index="1"]
+speed_scale = 4.0

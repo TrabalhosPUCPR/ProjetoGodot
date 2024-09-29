@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwob7lft84ejq"]
+[gd_scene load_steps=10 format=3 uid="uid://bwob7lft84ejq"]
 
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://shaders/night_sky.tres" id="1_enc0a"]
 [ext_resource type="PackedScene" uid="uid://4t3msssrdfbn" path="res://assets/Torii/Japanese_Arch_Low.FBX" id="1_ky268"]
 [ext_resource type="PackedScene" uid="uid://obbmwvfjafbq" path="res://scenes/character.tscn" id="2_y0ijv"]
 [ext_resource type="PackedScene" uid="uid://b3mk8lb4mdi74" path="res://scenes/japanese_shop.tscn" id="4_gryb0"]
+[ext_resource type="PackedScene" uid="uid://rdd1tx75omcf" path="res://scenes/shiba.tscn" id="5_780r0"]
 
 [sub_resource type="Sky" id="Sky_b8yev"]
 sky_material = ExtResource("1_enc0a")
@@ -54,3 +55,7 @@ skeleton = NodePath("../..")
 
 [node name="Node3D" parent="Scenery" instance=ExtResource("4_gryb0")]
 transform = Transform3D(-12, 0, -1.81195e-06, 0, 12, 0, 1.81195e-06, 0, -12, 44.7704, 0, 0)
+
+[node name="Shiba" parent="Scenery" node_paths=PackedStringArray("player") instance=ExtResource("5_780r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28611, 0, -15.9803)
+player = NodePath("../../Character")
