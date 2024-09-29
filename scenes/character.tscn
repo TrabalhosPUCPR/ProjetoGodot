@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://obbmwvfjafbq"]
 
-[ext_resource type="Script" path="res://character.gd" id="1_deuby"]
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_deuby"]
 [ext_resource type="PackedScene" uid="uid://b81lwml0vp3wl" path="res://assets/boneco.glb" id="1_t2ub4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wp2hb"]
