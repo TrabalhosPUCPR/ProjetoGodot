@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ct7upesliaft3"]
+
+[resource]
+resource_name = "bolinhas"
+cull_mode = 2
+shading_mode = 0

@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3mk8lb4mdi74"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxwv714bi2hvi" path="res://assets/japanese_shop/tienda1.obj" id="1_7bxwm"]
+[ext_resource type="Texture2D" uid="uid://bg1vyfh4m1jh1" path="res://assets/japanese_shop/tienda1Tx.png" id="2_vcq22"]
+[ext_resource type="Texture2D" uid="uid://bg7hdila356jg" path="res://assets/japanese_shop/tienda1TxNormal.png" id="3_cbqio"]
+[ext_resource type="Script" path="res://scripts/japanese_shop/top_lights.gd" id="4_ignrt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kdrie"]
+size = Vector3(3.28619, 3.35144, 2.73782)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phqkl"]
+albedo_texture = ExtResource("2_vcq22")
+normal_enabled = true
+normal_texture = ExtResource("3_cbqio")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741577, 1.67572, 0.0105438)
+shape = SubResource("BoxShape3D_kdrie")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("1_7bxwm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_phqkl")
+
+[node name="TopLights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125338, 0, 0)
+script = ExtResource("4_ignrt")
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="TopLights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82786, 2.60467, 0.758756)
+light_energy = 8.517
+spot_range = 13.16
+spot_angle = 61.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="TopLights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82786, 2.60467, 0.242315)
+light_energy = 8.517
+spot_range = 13.16
+spot_angle = 61.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="TopLights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82786, 2.60467, -0.261629)
+light_energy = 8.517
+spot_range = 13.16
+spot_angle = 61.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="TopLights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82786, 2.60467, -0.786507)
+light_color = Color(1, 0.709804, 0.611765, 1)
+light_energy = 8.517
+spot_range = 13.16
+spot_angle = 61.0
+
+[node name="Timer" type="Timer" parent="TopLights"]
+wait_time = 0.5
+autostart = true
+
+[node name="BottomLights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135497, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="BottomLights"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1.82802, 1.9328, -0.867541)
+light_color = Color(0.959473, 0.906065, 0.548316, 1)
+light_energy = 16.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_length = 36.01
+spot_range = 62.833
+spot_angle = 54.14
+spot_angle_attenuation = 0.594603
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BottomLights"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1.82802, 1.9328, 0.846016)
+light_color = Color(0.959473, 0.906065, 0.548316, 1)
+light_energy = 16.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_length = 36.01
+spot_range = 62.833
+spot_angle = 54.14
+spot_angle_attenuation = 0.594603
+
+[connection signal="timeout" from="TopLights/Timer" to="TopLights" method="_on_timer_timeout"]

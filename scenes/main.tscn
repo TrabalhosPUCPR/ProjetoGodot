@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwob7lft84ejq"]
+[gd_scene load_steps=9 format=3 uid="uid://bwob7lft84ejq"]
 
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://shaders/night_sky.tres" id="1_enc0a"]
 [ext_resource type="PackedScene" uid="uid://4t3msssrdfbn" path="res://assets/Torii/Japanese_Arch_Low.FBX" id="1_ky268"]
 [ext_resource type="PackedScene" uid="uid://obbmwvfjafbq" path="res://scenes/character.tscn" id="2_y0ijv"]
+[ext_resource type="PackedScene" uid="uid://b3mk8lb4mdi74" path="res://scenes/japanese_shop.tscn" id="4_gryb0"]
 
 [sub_resource type="Sky" id="Sky_b8yev"]
 sky_material = ExtResource("1_enc0a")
@@ -26,7 +27,8 @@ environment = SubResource("Environment_jrhev")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.912412, -0.271695, 0.306082, 0.0821181, 0.611129, 0.78726, -0.40095, 0.743441, -0.53529, -0.0541782, 29.0551, -15.6908)
-light_energy = 0.005
+light_color = Color(0.408329, 0.408329, 0.408329, 1)
+light_energy = 0.203
 shadow_enabled = true
 shadow_opacity = 0.4
 
@@ -39,10 +41,16 @@ shape = SubResource("BoxShape3D_sc777")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_cnl3t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 57)
-
-[node name="Japanese_Arch_Low" parent="MeshInstance3D" instance=ExtResource("1_ky268")]
-
 [node name="Character" parent="." instance=ExtResource("2_y0ijv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89821, 0)
+
+[node name="Scenery" type="Node" parent="."]
+
+[node name="BigGate" type="MeshInstance3D" parent="Scenery"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 57)
+skeleton = NodePath("../..")
+
+[node name="Japanese_Arch_Low" parent="Scenery/BigGate" instance=ExtResource("1_ky268")]
+
+[node name="Node3D" parent="Scenery" instance=ExtResource("4_gryb0")]
+transform = Transform3D(-12, 0, -1.81195e-06, 0, 12, 0, 1.81195e-06, 0, -12, 44.7704, 0, 0)

@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://crh5pwulteuqm"]
+
+[resource]
+resource_name = "Katana Sheath 1"
+cull_mode = 2

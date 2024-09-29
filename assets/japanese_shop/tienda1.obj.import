@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxwv714bi2hvi"
+path="res://.godot/imported/tienda1.obj-bb890790cbdeb174df37768e1019b79d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tienda1.obj-bb890790cbdeb174df37768e1019b79d.mesh"]
+
+source_file="res://assets/japanese_shop/tienda1.obj"
+dest_files=["res://.godot/imported/tienda1.obj-bb890790cbdeb174df37768e1019b79d.mesh", "res://.godot/imported/tienda1.obj-bb890790cbdeb174df37768e1019b79d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

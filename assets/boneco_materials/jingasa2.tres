@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5hjppjtnabdw"]
+
+[resource]
+resource_name = "jingasa2"
+cull_mode = 2
+shading_mode = 0
