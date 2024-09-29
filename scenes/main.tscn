@@ -17,12 +17,15 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_sc777"]
 size = Vector3(500, 2, 500)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_yme03"]
-noise_type = 5
-metadata/_preview_in_3d_space_ = true
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_umqh0"]
+frequency = 0.0013
+fractal_octaves = 10
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x3hui"]
-noise = SubResource("FastNoiseLite_yme03")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tl50v"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.433
+noise = SubResource("FastNoiseLite_umqh0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35n8x"]
 render_priority = 0
@@ -30,9 +33,9 @@ shader = ExtResource("2_t6mdt")
 shader_parameter/noise_strength = 1.0
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/shadow_strenght = 0.95
-shader_parameter/uv_scale = Vector2(0.1, 0.1)
-shader_parameter/speed = Vector2(2, 5)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_x3hui")
+shader_parameter/uv_scale = Vector2(0.001, 0.001)
+shader_parameter/speed = Vector2(0.005, 0.005)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tl50v")
 
 [sub_resource type="BoxMesh" id="BoxMesh_cnl3t"]
 material = SubResource("ShaderMaterial_35n8x")
@@ -45,7 +48,7 @@ environment = SubResource("Environment_jrhev")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.912412, -0.271695, 0.306082, 0.0821181, 0.611129, 0.78726, -0.40095, 0.743441, -0.53529, -0.0541782, 29.0551, -15.6908)
-light_energy = 0.012
+light_energy = 0.007
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -63,4 +66,4 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 57)
 [node name="Japanese_Arch_Low" parent="MeshInstance3D" instance=ExtResource("1_ky268")]
 
 [node name="Character" parent="." instance=ExtResource("2_y0ijv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89821, 0)

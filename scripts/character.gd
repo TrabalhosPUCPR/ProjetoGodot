@@ -1,29 +1,47 @@
 extends CharacterBody3D
 
+@export var acceleration = 5.
+@export var sprint_speed = 35.
+@export var walk_speed = 15.
+@export var jump_strength = 35.5
+@export var gravity = 100.
 
-const SPEED = 25.0
-const JUMP_VELOCITY = 4.5
-
+@onready var _model: Node3D = $Pivot/boneco 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	
+	var move_direction = Vector3.ZERO
+	move_direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	move_direction.z = Input.get_action_strength("Backward") - Input.get_action_strength("Forward")
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		$Pivot.look_at(position + direction, Vector3.UP)
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	if move_direction != Vector3.ZERO:
+		move_direction = move_direction.normalized()
+		move_direction = move_direction.rotated(Vector3.UP, $SpringArm3D.rotation.y)
+		$Pivot.basis = lerp($Pivot.basis, Basis.looking_at(move_direction), delta * acceleration)
+	var speed: float
+	if Input.is_action_pressed("Sprint"):
+		speed = sprint_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		speed = walk_speed
+	
+	var current_velocity = Vector3.ZERO
+	current_velocity.x = move_direction.x * speed
+	current_velocity.z = move_direction.z * speed
+	
+	if is_on_floor():
+		if Input.is_action_just_pressed("Jump"):
+			velocity.y = jump_strength
+		else:
+			velocity.y = 0
+	else:
+		velocity.y -= gravity * delta
+		
+	if velocity != current_velocity:
+		velocity.x = lerp(velocity.x, current_velocity.x, delta * acceleration)
+		velocity.z = lerp(velocity.z, current_velocity.z, delta * acceleration)
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	$SpringArm3D.position.x = position.x
+	$SpringArm3D.position.z = position.z
+	$SpringArm3D.set_camera_height(position.y)
