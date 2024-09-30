@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccg0m5qw03g3i"]
+
+[ext_resource type="Script" path="res://scripts/tree.gd" id="1_xo05a"]
+[ext_resource type="PackedScene" uid="uid://bwur1gm5mpg5e" path="res://assets/trees/Normal Tree.glb" id="2_mpxiv"]
+[ext_resource type="PackedScene" uid="uid://ci4vd54pc538u" path="res://assets/trees/Cherry Tree.glb" id="3_xr2pt"]
+[ext_resource type="PackedScene" uid="uid://cna4rio0n8nnm" path="res://assets/trees/Normal Tree Greener.glb" id="4_y0via"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6u4k"]
+size = Vector3(0.629486, 2.34412, 0.435165)
+
+[node name="Tree" type="Node3D"]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
+script = ExtResource("1_xo05a")
+
+[node name="Normal Tree" parent="." instance=ExtResource("2_mpxiv")]
+visible = false
+
+[node name="Cherry Tree" parent="." instance=ExtResource("3_xr2pt")]
+
+[node name="Normal Tree Greener" parent="." instance=ExtResource("4_y0via")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00547791, 1.179, 0.000450134)
+shape = SubResource("BoxShape3D_e6u4k")

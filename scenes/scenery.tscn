@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://camcnl6k1t4a0"]
+
+[ext_resource type="PackedScene" uid="uid://b3mk8lb4mdi74" path="res://scenes/japanese_shop.tscn" id="1_ajplb"]
+
+[node name="Scenery" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 46.1541)
+
+[node name="Node3D2" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 78.6789)
+
+[node name="Node3D3" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 111.246)
+
+[node name="Node3D4" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 143.771)
+
+[node name="Node3D5" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 176.094)
+
+[node name="Node3D6" parent="." instance=ExtResource("1_ajplb")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 208.619)

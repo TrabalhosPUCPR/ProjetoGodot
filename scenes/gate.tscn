@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bny5uueqhcb5h"]
+
+[ext_resource type="PackedScene" uid="uid://4t3msssrdfbn" path="res://assets/Torii/Japanese_Arch_Low.FBX" id="1_31awn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxwn2"]
+size = Vector3(6.14719, 33.6178, 5.48929)
+
+[node name="Gate" type="Node3D"]
+
+[node name="Japanese_Arch_Low" parent="." instance=ExtResource("1_31awn")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1145, 16.3089, 0.0810442)
+shape = SubResource("BoxShape3D_pxwn2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.94, 16.3089, 0.0810442)
+shape = SubResource("BoxShape3D_pxwn2")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdopx0sx3h7wr"]
+
+[ext_resource type="PackedScene" uid="uid://dpm6wuyi67edi" path="res://assets/Skyline_R32.glb" id="1_8cedm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82eos"]
+size = Vector3(1, 1, 2.53802)
+
+[node name="SkyLine" type="Node3D"]
+transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 0, 0, 0)
+
+[node name="Skyline_R32" parent="." instance=ExtResource("1_8cedm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502084, 0.00719833)
+shape = SubResource("BoxShape3D_82eos")

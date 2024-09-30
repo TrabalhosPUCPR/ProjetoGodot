@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwob7lft84ejq"]
+[gd_scene load_steps=18 format=3 uid="uid://bwob7lft84ejq"]
 
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://shaders/night_sky.tres" id="1_enc0a"]
-[ext_resource type="PackedScene" uid="uid://4t3msssrdfbn" path="res://assets/Torii/Japanese_Arch_Low.FBX" id="1_ky268"]
+[ext_resource type="PackedScene" uid="uid://ccg0m5qw03g3i" path="res://scenes/tree.tscn" id="1_iahbf"]
+[ext_resource type="PackedScene" uid="uid://bny5uueqhcb5h" path="res://scenes/gate.tscn" id="1_v0pwq"]
 [ext_resource type="PackedScene" uid="uid://obbmwvfjafbq" path="res://scenes/character.tscn" id="2_y0ijv"]
-[ext_resource type="PackedScene" uid="uid://b3mk8lb4mdi74" path="res://scenes/japanese_shop.tscn" id="4_gryb0"]
+[ext_resource type="Texture2D" uid="uid://ddp2epi0yeqrs" path="res://assets/ground.jpg" id="3_vt8y0"]
 [ext_resource type="PackedScene" uid="uid://rdd1tx75omcf" path="res://scenes/shiba.tscn" id="5_780r0"]
 [ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="6_drb6p"]
+[ext_resource type="PackedScene" uid="uid://camcnl6k1t4a0" path="res://scenes/scenery.tscn" id="6_iw5vp"]
+[ext_resource type="PackedScene" uid="uid://cdopx0sx3h7wr" path="res://scenes/skyline_car.tscn" id="7_tyfvb"]
 
 [sub_resource type="Sky" id="Sky_b8yev"]
 sky_material = ExtResource("1_enc0a")
@@ -19,7 +22,14 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_sc777"]
 size = Vector3(500, 2, 500)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4qbm"]
+albedo_texture = ExtResource("3_vt8y0")
+uv1_scale = Vector3(0.04, 0.04, 0.04)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.18921
+
 [sub_resource type="BoxMesh" id="BoxMesh_cnl3t"]
+material = SubResource("StandardMaterial3D_n4qbm")
 size = Vector3(500, 2, 500)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b82i1"]
@@ -48,13 +58,46 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xgmwy")
 
 [node name="Main" type="Node"]
 
+[node name="SkyLine4" parent="." instance=ExtResource("7_tyfvb")]
+transform = Transform3D(16.6594, 0, -3.38606, 0, 17, 0, 3.38606, 0, 16.6594, -121.339, 3.8147e-06, -50.8614)
+
+[node name="SkyLine3" parent="." instance=ExtResource("7_tyfvb")]
+transform = Transform3D(16.4008, 0, -4.47382, 0, 17, 0, 4.47382, 0, 16.4008, -103.841, 0, -99.5623)
+
+[node name="Scenery11" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-1, 0, 0.000384005, 0, 1, 0, -0.000384005, 0, -1, -48.8079, 0, 85.7987)
+
+[node name="Scenery10" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(0.898664, 0, -0.438638, 0, 1, 0, 0.438638, 0, 0.898664, -83.8022, 0, -253.712)
+
+[node name="Scenery9" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-0.742128, 0, -0.670258, 0, 1, 0, 0.670258, 0, -0.742128, 260.504, 0, 8.31129)
+
+[node name="Scenery8" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(0.999027, 0, 0.0440903, 0, 1, 0, -0.0440903, 0, 0.999027, 39.3821, 0, -178.295)
+
+[node name="SkyLine2" parent="." instance=ExtResource("7_tyfvb")]
+transform = Transform3D(4.05247, 0, -16.5099, 0, 17, 0, 16.5099, 0, 4.05247, 61.5078, 0, 66.5183)
+
+[node name="Scenery7" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-0.510813, 0, 0.859692, 0, 1, 0, -0.859692, 0, -0.510813, -29.5639, 0, 281.417)
+
+[node name="Scenery6" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.523, 0, -88.3738)
+
+[node name="Scenery4" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-0.80629, 0, 0.591521, 0, 1, 0, -0.591521, 0, -0.80629, 29.966, 0, 184.625)
+
+[node name="Gate" parent="." instance=ExtResource("1_v0pwq")]
+transform = Transform3D(0.999703, 0, 0.0243624, 0, 1, 0, -0.0243624, 0, 0.999703, -0.540345, 0, 56.0181)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jrhev")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.912412, -0.271695, 0.306082, 0.0821181, 0.611129, 0.78726, -0.40095, 0.743441, -0.53529, -0.0541782, 29.0551, -15.6908)
+transform = Transform3D(-0.999506, -0.0314107, -6.84178e-08, -0.0245823, 0.782222, 0.622515, -0.0195536, 0.622207, -0.782608, -0.0541782, 29.0551, -15.6908)
 light_color = Color(0.408329, 0.408329, 0.408329, 1)
-light_energy = 0.203
+light_energy = 0.47
 shadow_enabled = true
 shadow_opacity = 0.4
 
@@ -70,20 +113,10 @@ mesh = SubResource("BoxMesh_cnl3t")
 [node name="Character" parent="." instance=ExtResource("2_y0ijv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89821, 0)
 
-[node name="Scenery" type="Node" parent="."]
-
-[node name="BigGate" type="MeshInstance3D" parent="Scenery"]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 57)
-skeleton = NodePath("../..")
-
-[node name="Japanese_Arch_Low" parent="Scenery/BigGate" instance=ExtResource("1_ky268")]
-
-[node name="Node3D" parent="Scenery" instance=ExtResource("4_gryb0")]
-transform = Transform3D(-12, 0, -1.81195e-06, 0, 12, 0, 1.81195e-06, 0, -12, 44.7704, 0, 0)
-
-[node name="Shiba" parent="Scenery" node_paths=PackedStringArray("player") instance=ExtResource("5_780r0")]
+[node name="Shiba" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_780r0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28611, 0, -15.9803)
-player = NodePath("../../Character")
+player = NodePath("../Character")
+speed = 20.0
 
 [node name="VhsEffect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8jrc8")
@@ -93,3 +126,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Scenery" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3477, 0, -168.911)
+
+[node name="Scenery2" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 39.5344, 0, 82.9718)
+
+[node name="Scenery3" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(-0.141385, 0, -0.989955, 0, 1, 0, 0.989955, 0, -0.141385, 126.159, 0, -163.756)
+
+[node name="SkyLine" parent="." instance=ExtResource("7_tyfvb")]
+transform = Transform3D(0.0973181, 0, 16.9997, 0, 17, 0, -16.9997, 0, 0.0973181, -44.4455, 0, 70.9179)
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="Tree9" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 104.003, 0, -18.9624)
+tree_type = 1
+
+[node name="Tree7" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, -110.842, 0, 78.9188)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 109.967, 0, -50.5932)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 34.1491, 9.53674e-07, 157.908)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -50.1278, 0, 108.323)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 125.789)
+tree_type = 1
+
+[node name="Tree" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(0.418014, 0, -13.9938, 0, 14, 0, 13.9938, 0, 0.418014, 23.3752, 0, 85.3207)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, -111.004, 0, 0)
+tree_type = 2
+
+[node name="Tree8" parent="Trees" instance=ExtResource("1_iahbf")]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, -202.847, 0, 185.534)
+tree_type = 1
+
+[node name="Scenery5" parent="." instance=ExtResource("6_iw5vp")]
+transform = Transform3D(0.115752, 0, 0.993278, 0, 1, 0, -0.993278, 0, 0.115752, -196.5, 0, 150.4)
