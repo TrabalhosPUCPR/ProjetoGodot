@@ -1,25 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dek2tdpwmbpd7"]
+[gd_scene load_steps=4 format=3 uid="uid://soq5prhut5no"]
 
 [ext_resource type="PackedScene" uid="uid://wsvecma0pgg2" path="res://assets/shiba/Shiba.glb" id="1_7mlnm"]
 [ext_resource type="Texture2D" uid="uid://dif0h3qxfdwwg" path="res://assets/shiba/Shiba_DIF01.png" id="2_3sabu"]
-[ext_resource type="Script" path="res://assets/shiba/shiba.gd" id="2_cwac3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blwm6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31a6s"]
 albedo_texture = ExtResource("2_3sabu")
 
 [node name="Shiba" instance=ExtResource("1_7mlnm")]
-script = ExtResource("2_cwac3")
-
-[node name="Armature" parent="." index="0"]
-transform = Transform3D(0.112235, 0, 0, 0, 0.0234113, 0.109766, 0, -0.109766, 0.0234113, -8.43406e-18, 0.0591198, 0.0570235)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-1.19592e-16, 0.0318294, -0.0277611)
-bones/0/rotation = Quaternion(0.0192215, 1.19187e-07, 2.29139e-09, 0.999815)
-bones/1/rotation = Quaternion(0.550597, 0.0936839, -0.104148, 0.822934)
+bones/0/position = Vector3(-0.00599788, 0.332419, 0.494445)
+bones/1/rotation = Quaternion(0.510382, 0.0744682, -0.0434997, 0.855612)
+bones/2/rotation = Quaternion(0.277376, -0.0499045, 0.141917, 0.948911)
+bones/3/rotation = Quaternion(-0.289801, 0.00475758, -0.361667, 0.886109)
+bones/4/rotation = Quaternion(-0.263232, 0.150274, 0.309724, 0.90122)
+bones/5/rotation = Quaternion(-0.134518, -0.0554922, 0.5062, 0.850051)
+bones/6/rotation = Quaternion(-0.367918, -0.164124, -0.22509, 0.88715)
+bones/7/position = Vector3(-0.0236386, 0.323798, 0.441153)
+bones/7/rotation = Quaternion(0.0368312, -0.55792, 0.82887, -0.0185138)
+bones/8/rotation = Quaternion(0.552513, 0.777525, -0.22625, 0.197472)
+bones/9/rotation = Quaternion(0.0651163, 0.561255, -0.579576, 0.587234)
+bones/10/rotation = Quaternion(0.221601, -0.267781, 0.585499, 0.732377)
+bones/11/rotation = Quaternion(-0.337052, 0.0416023, -0.505163, 0.793395)
+bones/13/rotation = Quaternion(-0.0732352, -0.000175486, 0.019279, 0.997128)
 
 [node name="Shiba inu" parent="Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_blwm6")
-
-[node name="AnimationPlayer" parent="." index="1"]
-speed_scale = 4.0
+surface_material_override/0 = SubResource("StandardMaterial3D_31a6s")

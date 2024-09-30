@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwob7lft84ejq"]
+[gd_scene load_steps=20 format=3 uid="uid://bwob7lft84ejq"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_a3rfh"]
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://shaders/night_sky.tres" id="1_enc0a"]
 [ext_resource type="PackedScene" uid="uid://ccg0m5qw03g3i" path="res://scenes/tree.tscn" id="1_iahbf"]
 [ext_resource type="PackedScene" uid="uid://bny5uueqhcb5h" path="res://scenes/gate.tscn" id="1_v0pwq"]
@@ -56,13 +57,18 @@ shader_parameter/bottom_border_jitter = 6.0
 shader_parameter/noise_intensity = 0.1
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_xgmwy")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0nxs8"]
+size = Vector3(1, 40.5053, 14.0483)
+
 [node name="Main" type="Node"]
+script = ExtResource("1_a3rfh")
 
 [node name="SkyLine4" parent="." instance=ExtResource("7_tyfvb")]
 transform = Transform3D(16.6594, 0, -3.38606, 0, 17, 0, 3.38606, 0, 16.6594, -121.339, 3.8147e-06, -50.8614)
 
 [node name="SkyLine3" parent="." instance=ExtResource("7_tyfvb")]
 transform = Transform3D(16.4008, 0, -4.47382, 0, 17, 0, 4.47382, 0, 16.4008, -103.841, 0, -99.5623)
+light_left_on = false
 
 [node name="Scenery11" parent="." instance=ExtResource("6_iw5vp")]
 transform = Transform3D(-1, 0, 0.000384005, 0, 1, 0, -0.000384005, 0, -1, -48.8079, 0, 85.7987)
@@ -103,6 +109,7 @@ shadow_opacity = 0.4
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_sc777")
@@ -112,11 +119,12 @@ mesh = SubResource("BoxMesh_cnl3t")
 
 [node name="Character" parent="." instance=ExtResource("2_y0ijv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89821, 0)
+sprint_speed = 25.0
 
 [node name="Shiba" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_780r0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28611, 0, -15.9803)
 player = NodePath("../Character")
-speed = 20.0
+speed = 13.0
 
 [node name="VhsEffect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8jrc8")
@@ -138,6 +146,7 @@ transform = Transform3D(-0.141385, 0, -0.989955, 0, 1, 0, 0.989955, 0, -0.141385
 
 [node name="SkyLine" parent="." instance=ExtResource("7_tyfvb")]
 transform = Transform3D(0.0973181, 0, 16.9997, 0, 17, 0, -16.9997, 0, 0.0973181, -44.4455, 0, 70.9179)
+light_left_on = false
 
 [node name="Trees" type="Node3D" parent="."]
 
@@ -174,3 +183,19 @@ tree_type = 1
 
 [node name="Scenery5" parent="." instance=ExtResource("6_iw5vp")]
 transform = Transform3D(0.115752, 0, 0.993278, 0, 1, 0, -0.993278, 0, 0.115752, -196.5, 0, 150.4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6281, 0, -151.813)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.7526, -1.41187)
+shape = SubResource("BoxShape3D_0nxs8")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5567, 0, 55.9125)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.7526, -1.41187)
+shape = SubResource("BoxShape3D_0nxs8")

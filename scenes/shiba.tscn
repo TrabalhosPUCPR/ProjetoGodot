@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://rdd1tx75omcf"]
 
-[ext_resource type="PackedScene" uid="uid://dek2tdpwmbpd7" path="res://assets/shiba/shiba.tscn" id="1_irquv"]
+[ext_resource type="PackedScene" uid="uid://soq5prhut5no" path="res://assets/shiba/shiba.tscn" id="1_irquv"]
 [ext_resource type="Script" path="res://scripts/shiba.gd" id="1_y05n8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hp2xv"]
-radius = 1.83914
-height = 4.73014
+radius = 1.92238
+height = 21.4611
 
 [node name="Shiba" type="CharacterBody3D"]
 script = ExtResource("1_y05n8")
@@ -13,8 +13,8 @@ script = ExtResource("1_y05n8")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Shiba" parent="Pivot" instance=ExtResource("1_irquv")]
-transform = Transform3D(-21, 0, -1.83588e-06, 0, 21, 0, 1.83588e-06, 0, -21, 0, 0, 0)
+transform = Transform3D(-15, 0, -2.26494e-06, 0, 15, 0, 2.26494e-06, 0, -15, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0123043, -0.999924, 0, 0.999924, -0.0123043, 0, 1.8, 0.324233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7099, 0.324233)
 shape = SubResource("CapsuleShape3D_hp2xv")

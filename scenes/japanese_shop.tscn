@@ -17,6 +17,7 @@ normal_texture = ExtResource("3_cbqio")
 transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
 
 [node name="Body" type="StaticBody3D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741577, 1.67572, 0.0105438)

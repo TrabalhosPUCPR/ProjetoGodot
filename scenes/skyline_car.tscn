@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdopx0sx3h7wr"]
+[gd_scene load_steps=4 format=3 uid="uid://cdopx0sx3h7wr"]
 
+[ext_resource type="Script" path="res://scripts/skyline_car.gd" id="1_6qdy4"]
 [ext_resource type="PackedScene" uid="uid://dpm6wuyi67edi" path="res://assets/Skyline_R32.glb" id="1_8cedm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_82eos"]
@@ -7,11 +8,45 @@ size = Vector3(1, 1, 2.53802)
 
 [node name="SkyLine" type="Node3D"]
 transform = Transform3D(17, 0, 0, 0, 17, 0, 0, 0, 17, 0, 0, 0)
+script = ExtResource("1_6qdy4")
 
 [node name="Skyline_R32" parent="." instance=ExtResource("1_8cedm")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502084, 0.00719833)
 shape = SubResource("BoxShape3D_82eos")
+
+[node name="LightLeft" type="Node3D" parent="."]
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="LightLeft"]
+transform = Transform3D(0.907345, 0, 0.420387, 0, 1, 0, -0.420387, 0, 0.907345, 0.404726, 0.365482, 1.32054)
+light_energy = 94.665
+shadow_enabled = true
+spot_range = 4.21153
+spot_angle = 39.0497
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightLeft"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.372808, 0.365482, 1.12991)
+light_energy = 94.665
+shadow_enabled = true
+spot_range = 50.6116
+spot_angle = 44.0693
+
+[node name="LightRight" type="Node3D" parent="."]
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="LightRight"]
+transform = Transform3D(0.763312, 0, -0.646031, 0, 1, 0, 0.646031, 0, 0.763312, -0.419336, 0.386981, 1.33359)
+light_energy = 94.665
+shadow_enabled = true
+spot_range = 4.21153
+spot_angle = 39.0497
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightRight"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.271766, 0.386981, 1.21347)
+light_energy = 94.665
+shadow_enabled = true
+spot_range = 50.6116
+spot_angle = 44.0693
